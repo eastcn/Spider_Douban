@@ -12,6 +12,7 @@ def get_html(url):
     soup = BeautifulSoup(html,"html.parser")
     data = soup.find("div",id="wrapper") # wrapper是整个图书栏的div
     return data
+
 def get_data(data):
     table=data.find_all('table')
     for link in table:
@@ -23,6 +24,8 @@ def get_data(data):
         print(name+author+time+score+people_num)
         with open('F://book.txt', 'a+', encoding='UTF-8') as f:
             f.write(name + ' ' + author + ' ' + time + ' ' + score + ' ' + people_num + ' ' + '\r\n')
+
+
 
 if __name__ == '__main__':
     url='https://book.douban.com/top250?start='
