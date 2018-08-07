@@ -59,7 +59,7 @@ def filter_(comment_list):
 		names=["stopword"],
 		encoding="utf-8"
 	)
-	words_df =words_df[~words_df.segment.isin(stopword.stopword)]  
+	words_df =words_df[~words_df.segment.isin(stopword.stopword)]
 
 	return words_df
 
@@ -76,7 +76,7 @@ def statistics(words_df,moviename):
         height=860,
         margin=2,
     )
-	word_frequence = {x [0]: x [1] for x in words_stat.head (1000).values}
+	word_frequence = {x [0]: x [1] for x in words_stat.head (500).values}
 	wordcloud = wordcloud.fit_words (word_frequence)
 	plt.imshow (wordcloud)
 	plt.axis ("off")
@@ -85,8 +85,8 @@ def statistics(words_df,moviename):
 	wordcloud.to_file (img_name)
 
 if __name__ == "__main__":
-	movieid=str(27605698)
-	moviename="西虹市首富"
+	movieid=str(27622447)
+	moviename="小偷家族"
 	#print(get_comment(movieid))
 	statistics(filter_(get_comment (movieid)),moviename)
 
